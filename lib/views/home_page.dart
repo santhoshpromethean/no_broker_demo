@@ -26,6 +26,14 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    String truncateProductName(String productName) {
+      List<String> words = productName.split(' ');
+      if (words.length > 5) {
+        return '${words.sublist(0, 5).join(' ')}...';
+      }
+      return productName;
+    }
+
     List<String> texts = [
       'Apartments',
       'Commercial',
@@ -289,7 +297,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
-                                childAspectRatio: 3 / 4.6,
+                                childAspectRatio: 3 / 4.7,
                               ),
                               itemCount: landReader.value?.length ?? 0,
                               shrinkWrap: true,
@@ -462,13 +470,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                                           border: Border.fromBorderSide(
                                               BorderSide(
                                                   color: Colors.black12))),
-                                      height: height * 0.25,
+                                      // height: height * 0.27,
                                       child: Column(
                                         children: [
                                           Row(
                                             children: [
                                               SizedBox(
-                                                height: height * 0.15,
+                                                width: 130,
                                                 child: Image.asset(
                                                   "assets/images/img.png",
                                                   // scale: 5,
@@ -535,7 +543,11 @@ class _HomePageState extends ConsumerState<HomePage> {
                                                               ? details.location
                                                                   .toString()
                                                               : "Null",
+                                                          maxLines: 2,
                                                           style: TextStyle(
+                                                              overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                               color: Colors
                                                                   .black54),
                                                         )

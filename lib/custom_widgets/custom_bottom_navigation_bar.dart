@@ -28,6 +28,8 @@ class _CustomBottomNavigationBarState
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: pageList[currentTab],
       floatingActionButton: FloatingActionButton(
@@ -49,12 +51,12 @@ class _CustomBottomNavigationBarState
         children: <Widget>[
           Container(
             color: Color(0xffefbda9),
-            height: 70,
+            height: height * 0.1,
           ),
           Positioned(
               right: 0,
               left: 0,
-              top: 8,
+              top: height * 0.011,
               bottom: 0,
               child: BottomAppBar(
                 // height: 50,
@@ -74,7 +76,7 @@ class _CustomBottomNavigationBarState
                       text: "Search",
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 22.0),
+                      padding: EdgeInsets.only(top: height * 0.01),
                       child: Text(
                         "Post",
                         style: TextStyle(
