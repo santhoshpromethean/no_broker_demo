@@ -145,7 +145,7 @@ class _HomePageState extends ConsumerState<HomePage> {
             ),
           ),
           SizedBox(
-            height: height * 0.22,
+            height: height * 0.23,
             child: Column(
               children: [
                 Padding(
@@ -191,10 +191,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                         padding: const EdgeInsets.symmetric(horizontal: 15.0),
                         child: Column(
                           children: [
-                            ClipOval(
-                              child: Image.asset(
-                                "assets/images/img.png",
-                                scale: 6,
+                            SizedBox(
+                              height: 55,
+                              width: 55,
+                              child: ClipOval(
+                                child: Image.asset(
+                                  "assets/images/img.png",
+                                  scale: 6,
+                                ),
                               ),
                             ),
                             Text(texts[index])
@@ -471,203 +475,201 @@ class _HomePageState extends ConsumerState<HomePage> {
                                               BorderSide(
                                                   color: Colors.black12))),
                                       // height: height * 0.27,
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            children: [
-                                              SizedBox(
-                                                width: 130,
-                                                child: Image.asset(
-                                                  "assets/images/img.png",
-                                                  // scale: 5,
+                                      child: Stack(children: <Widget>[
+                                        Column(
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(
+                                                  width: 130,
+                                                  child: Image.asset(
+                                                    "assets/images/img.png",
+                                                    // scale: 5,
+                                                  ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 8),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(4),
-                                                        color: const Color(
-                                                            0xfff5d9ce),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                .symmetric(
-                                                                horizontal: 8.0,
-                                                                vertical: 6),
-                                                        child: Center(
-                                                          child: const Text(
-                                                            "Land/Plot",
-                                                            style: TextStyle(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                color: Color(
-                                                                    0xffFF5722)),
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(horizontal: 8),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(4),
+                                                          color: const Color(
+                                                              0xfff5d9ce),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .symmetric(
+                                                                  horizontal:
+                                                                      8.0,
+                                                                  vertical: 6),
+                                                          child: Center(
+                                                            child: const Text(
+                                                              "Land/Plot",
+                                                              style: TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  color: Color(
+                                                                      0xffFF5722)),
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: height * 0.005,
-                                                    ),
-                                                    Text(
-                                                      details.landName != null
-                                                          ? details.landName
-                                                              .toString()
-                                                          : "No Name",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    SizedBox(
-                                                      height: height * 0.005,
-                                                    ),
-                                                    Row(
-                                                      children: [
-                                                        Icon(Icons.location_on,
-                                                            color:
-                                                                Colors.black54),
-                                                        Text(
-                                                          details.location !=
-                                                                  null
-                                                              ? details.location
-                                                                  .toString()
-                                                              : "Null",
-                                                          maxLines: 2,
-                                                          style: TextStyle(
-                                                              overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
+                                                      SizedBox(
+                                                        height: height * 0.005,
+                                                      ),
+                                                      Text(
+                                                        details.landName != null
+                                                            ? details.landName
+                                                                .toString()
+                                                            : "No Name",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold),
+                                                      ),
+                                                      SizedBox(
+                                                        height: height * 0.005,
+                                                      ),
+                                                      Row(
+                                                        children: [
+                                                          Icon(
+                                                              Icons.location_on,
                                                               color: Colors
                                                                   .black54),
-                                                        )
-                                                      ],
+                                                          Text(
+                                                            details.location !=
+                                                                    null
+                                                                ? details
+                                                                    .location
+                                                                    .toString()
+                                                                : "Null",
+                                                            maxLines: 2,
+                                                            style: TextStyle(
+                                                                overflow:
+                                                                    TextOverflow
+                                                                        .ellipsis,
+                                                                color: Colors
+                                                                    .black54),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      SizedBox(
+                                                        height: height * 0.04,
+                                                      ),
+                                                      Text(
+                                                        details.price != null
+                                                            ? details.price
+                                                                .toString()
+                                                            : "Null",
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color: Color(
+                                                                0xffFF5722)),
+                                                      )
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Divider(
+                                              thickness: 0.5,
+                                            ),
+                                            Column(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    DetailRow(
+                                                      icon: Icons.person,
+                                                      text: "I'm :",
+                                                      value:
+                                                          details.owner != null
+                                                              ? details.owner
+                                                              : "Null",
                                                     ),
-                                                    SizedBox(
-                                                      height: height * 0.04,
-                                                    ),
-                                                    Text(
-                                                      details.price != null
-                                                          ? details.price
-                                                              .toString()
+                                                    DetailRow(
+                                                      icon: Icons.bed,
+                                                      text: "Area Size :",
+                                                      value: details.areaSize !=
+                                                              null
+                                                          ? details.areaSize
                                                           : "Null",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Color(
-                                                              0xffFF5722)),
-                                                    )
+                                                    ),
+                                                    DetailRow(
+                                                      icon: Icons.local_offer,
+                                                      text: "Area Unit :",
+                                                      value: details.areaUnit !=
+                                                              null
+                                                          ? details.areaUnit
+                                                          : "Null",
+                                                    ),
                                                   ],
                                                 ),
-                                              ),
-                                              Spacer(),
-                                              Column(
-                                                children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            Colors.deepPurple,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(4),
-                                                        border: Border
-                                                            .fromBorderSide(
-                                                                BorderSide(
-                                                          color: Colors
-                                                              .transparent,
-                                                        ))),
-                                                    child: Icon(
-                                                        Icons.access_time,
-                                                        size: 18,
-                                                        color: Colors.white),
-                                                  ),
-                                                  SizedBox(
-                                                    height: height * 0.11,
-                                                  ),
-                                                  Text("")
-                                                ],
-                                              ),
-                                            ],
+                                                Row(
+                                                  children: [
+                                                    DetailRow(
+                                                      icon: Icons.explore,
+                                                      text: "Purpose :",
+                                                      value: details.purpose !=
+                                                              null
+                                                          ? details.purpose
+                                                          : "Null",
+                                                    ),
+                                                    DetailRow(
+                                                      icon: Icons.local_offer,
+                                                      text: "Parking:",
+                                                      value: details.parking !=
+                                                              null
+                                                          ? details.parking
+                                                          : "Null",
+                                                    ),
+                                                  ],
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    DetailRow(
+                                                      icon: Icons.local_offer,
+                                                      text: "location :",
+                                                      value:
+                                                          details.fullLocation !=
+                                                                  null
+                                                              ? details
+                                                                  .fullLocation
+                                                              : "Null",
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            )
+                                          ],
+                                        ),
+                                        Positioned(
+                                          right: 0,
+                                          top: 0,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                color: Colors.deepPurple,
+                                                borderRadius:
+                                                    BorderRadius.circular(4),
+                                                border: Border.fromBorderSide(
+                                                    BorderSide(
+                                                  color: Colors.transparent,
+                                                ))),
+                                            child: Icon(Icons.access_time,
+                                                size: 18, color: Colors.white),
                                           ),
-                                          Divider(
-                                            thickness: 0.5,
-                                          ),
-                                          Column(
-                                            children: [
-                                              Row(
-                                                children: [
-                                                  DetailRow(
-                                                    icon: Icons.person,
-                                                    text: "I'm :",
-                                                    value: details.owner != null
-                                                        ? details.owner
-                                                        : "Null",
-                                                  ),
-                                                  DetailRow(
-                                                    icon: Icons.bed,
-                                                    text: "Area Size :",
-                                                    value:
-                                                        details.areaSize != null
-                                                            ? details.areaSize
-                                                            : "Null",
-                                                  ),
-                                                  DetailRow(
-                                                    icon: Icons.local_offer,
-                                                    text: "Area Unit :",
-                                                    value:
-                                                        details.areaUnit != null
-                                                            ? details.areaUnit
-                                                            : "Null",
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  DetailRow(
-                                                    icon: Icons.explore,
-                                                    text: "Purpose :",
-                                                    value:
-                                                        details.purpose != null
-                                                            ? details.purpose
-                                                            : "Null",
-                                                  ),
-                                                  DetailRow(
-                                                    icon: Icons.local_offer,
-                                                    text: "Parking:",
-                                                    value:
-                                                        details.parking != null
-                                                            ? details.parking
-                                                            : "Null",
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                children: [
-                                                  DetailRow(
-                                                    icon: Icons.local_offer,
-                                                    text: "location :",
-                                                    value: details
-                                                                .fullLocation !=
-                                                            null
-                                                        ? details.fullLocation
-                                                        : "Null",
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      )),
+                                        )
+                                      ])),
                                 );
                               },
                             ),
