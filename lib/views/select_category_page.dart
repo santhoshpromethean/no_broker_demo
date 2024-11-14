@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../custom_widgets/land_info.dart';
-import '../custom_widgets/side_drawer.dart';
-
-class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+class SelectCategoryPage extends StatefulWidget {
+  const SelectCategoryPage({super.key});
 
   @override
-  State<SearchPage> createState() => _SelectCategoryPageState();
+  State<SelectCategoryPage> createState() => _SelectCategoryPageState();
 }
 
-class _SelectCategoryPageState extends State<SearchPage> {
+class _SelectCategoryPageState extends State<SelectCategoryPage> {
   List<String> texts = [
     'Apartments',
     'Commercial',
@@ -44,74 +41,36 @@ class _SelectCategoryPageState extends State<SearchPage> {
     double width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      drawer: SideDrawer(),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: const Color(0xffFF5722),
         centerTitle: true,
-        flexibleSpace: Center(
-          child: Padding(
-            padding: EdgeInsets.only(top: height * .036),
-            child: Image.asset(
-              "assets/images/img_1.png",
-              scale: 2.5,
-            ),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context), // Corrected back navigation
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
           ),
         ),
+        title: const Text(
+          "Select Category",
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: height * 0.06,
-            color: const Color(0xffFF5722),
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: width * 0.03, vertical: width * 0.01),
-              child: Container(
-                // height: 45,
-                width: width,
-                decoration: boxDecoration,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Row(
-                    children: [
-                      Icon(Icons.location_pin,
-                          size: 16, color: Color(0xffFF5722)),
-                      Expanded(
-                        child: TextField(
-                          style: const TextStyle(fontSize: 18),
-                          decoration: InputDecoration(
-                              hintText: "location",
-                              hintStyle: const TextStyle(
-                                  fontSize: 14, color: Colors.black26),
-                              border: InputBorder.none),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              "All Categories",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
             ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 16.0, top: 16),
-                child: const Text(
-                  "All Categories",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            const SizedBox(height: 10),
+            Expanded(
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
@@ -168,8 +127,8 @@ class _SelectCategoryPageState extends State<SearchPage> {
                 },
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

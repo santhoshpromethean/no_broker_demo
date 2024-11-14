@@ -9,7 +9,7 @@ class NoBrokerApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: router,
-      title: 'NoBrokerApp',
+      title: 'No Broker Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

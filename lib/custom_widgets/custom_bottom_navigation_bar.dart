@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:no_broker_demo/views/home_page.dart';
 import 'package:no_broker_demo/views/search_page.dart';
 import 'package:no_broker_demo/views/add_post_page.dart';
 import 'package:no_broker_demo/views/chats_page.dart';
 import 'package:no_broker_demo/views/profile_page.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
+class CustomBottomNavigationBar extends ConsumerStatefulWidget {
   const CustomBottomNavigationBar({super.key});
 
   @override
-  State<CustomBottomNavigationBar> createState() =>
+  ConsumerState<CustomBottomNavigationBar> createState() =>
       _CustomBottomNavigationBarState();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+class _CustomBottomNavigationBarState
+    extends ConsumerState<CustomBottomNavigationBar> {
   int currentTab = 0;
 
   final List<Widget> pageList = [
@@ -29,14 +31,14 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return Scaffold(
       body: pageList[currentTab],
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffFF7B49),
+        backgroundColor: Color(0xffFF5722),
         shape: const CircleBorder(),
         onPressed: () {
           setState(() {
             currentTab = 2;
           });
         },
-        child: Icon(
+        child: const Icon(
           color: Colors.white,
           Icons.add,
           size: 35,
@@ -46,52 +48,54 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       bottomNavigationBar: Stack(
         children: <Widget>[
           Container(
-            color: Color(0xfff1a587),
-            height: 80,
+            color: Color(0xffefbda9),
+            height: 70,
           ),
           Positioned(
               right: 0,
               left: 0,
-              top: 10,
+              top: 8,
               bottom: 0,
               child: BottomAppBar(
+                // height: 50,
                 shape: const CircularNotchedRectangle(),
-                notchMargin: 4,
-                child: SizedBox(
-                  child: Row(
-                    children: <Widget>[
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          buildNavigatingItem(
-                            icon: Icons.home,
-                            index: 0,
-                            label: "Home",
-                          ),
-                          buildNavigatingItem(
-                            icon: Icons.search,
-                            index: 1,
-                            label: "Search",
-                          ),
-                        ],
+                // notchMargin: 8,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    buildNavigatingItem(
+                      icon: Icons.home,
+                      index: 0,
+                      text: "Home",
+                    ),
+                    buildNavigatingItem(
+                      icon: Icons.search,
+                      index: 1,
+                      text: "Search",
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 22.0),
+                      child: Text(
+                        "Post",
+                        style: TextStyle(
+                          color: currentTab == 2
+                              ? Color(0xffFF5722)
+                              : Colors.black54,
+                          fontSize: 13,
+                        ),
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          buildNavigatingItem(
-                            icon: Icons.chat,
-                            label: "Chats",
-                            index: 3,
-                          ),
-                          buildNavigatingItem(
-                            icon: Icons.person,
-                            label: "Profile",
-                            index: 4,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    ),
+                    buildNavigatingItem(
+                      icon: Icons.chat,
+                      text: "Chats",
+                      index: 3,
+                    ),
+                    buildNavigatingItem(
+                      icon: Icons.person,
+                      text: "Profile",
+                      index: 4,
+                    ),
+                  ],
                 ),
               ))
         ],
@@ -102,26 +106,26 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   Widget buildNavigatingItem({
     required IconData icon,
     required int index,
-    required String label,
+    required String text,
   }) {
-    return MaterialButton(
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         setState(() {
           currentTab = index;
         });
       },
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
+            size: 20,
             icon,
-            color: currentTab == index ? Color(0xffFF7B49) : Colors.grey,
+            color: currentTab == index ? Color(0xffFF5722) : Colors.black54,
           ),
           Text(
-            label,
+            text,
             style: TextStyle(
-              color: currentTab == index ? Color(0xffFF7B49) : Colors.grey,
-              fontSize: 10,
+              color: currentTab == index ? Color(0xffFF5722) : Colors.black54,
+              fontSize: 13,
             ),
           ),
         ],
